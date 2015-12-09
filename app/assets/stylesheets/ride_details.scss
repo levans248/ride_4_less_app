@@ -1,0 +1,80 @@
+// Place all the styles related to the ride_details controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.links {
+  margin-top: 210px;
+}
+
+#uber-login {
+  margin-left: 20px;
+  margin-top: 55px;
+  color: grey;
+}
+
+.credentials {
+  margin-top: -12px;
+  color: grey;
+}
+
+.submit {
+  background: grey;
+  color: black;
+  width: 61px;
+  height: 28px;
+  box-shadow: none;
+}
+
+.ride_info{
+  text-align: center;
+  margin-top: 150px;
+  color: black;
+}
+
+#request-info {
+  background: black;
+  font-size: 20px;
+  color: grey;
+  width: 200px;
+  height: 45px;
+  box-shadow: none;
+}
+
+.address_details {
+  width:450px;
+  height: 40px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-family: helvetica;
+}
+
+#menu-toggle {
+  position: fixed;
+}
+
+#uber_map {
+  margin-left: 10%;
+}
+
+#uber_map_title {
+  display: inline;
+  padding-top: 20px;
+  margin-left: 10%;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: underline;
+}
+
+#transit_map_title {
+  display: inline;
+  margin-top: 20px;
+  margin-left: 35%;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: underline;
+}
+
+
+
