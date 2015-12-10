@@ -62,7 +62,7 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -70,18 +70,17 @@
                         <%= yield %>
                     </div>
                 </div>
+                <div id="footer">
+                    <footer>
+                        <p>Webpage created by Luke Evans, luevans248@gmail.com</p>
+                    </footer>
+                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
@@ -90,6 +89,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+
 
 </body>
 

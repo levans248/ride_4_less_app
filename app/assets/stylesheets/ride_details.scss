@@ -27,7 +27,7 @@
 
 .ride_info{
   text-align: center;
-  margin-top: 150px;
+  margin-top: 140px;
   color: black;
 }
 
@@ -46,10 +46,12 @@
   margin-bottom: 15px;
   font-size: 20px;
   font-family: helvetica;
+
 }
 
 #menu-toggle {
   position: fixed;
+  margin-top: 15px;
 }
 
 #uber_map {
@@ -57,7 +59,6 @@
 }
 
 #uber_map_title {
-  display: inline;
   padding-top: 20px;
   margin-left: 10%;
   color: black;
@@ -67,13 +68,45 @@
 }
 
 #transit_map_title {
-  display: inline;
   margin-top: 20px;
-  margin-left: 35%;
+  margin-left: 15%;
   color: black;
   font-weight: bold;
   font-size: 40px;
   text-decoration: underline;
+}
+
+.uber_info {
+  float: left;
+  margin-left: 100px;
+}
+
+.bus_info {
+
+}
+
+
+.uber_ride_details {
+  margin-left: 5%;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.bus_ride_details {
+  margin-left: 11%;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.list_spacing {
+  margin-top: 10px;
+}
+
+.wrapper {
+    float: left;
+    width: 40%;
+    margin: 0 auto;
+    margin-left: 100px;
 }
 
 
