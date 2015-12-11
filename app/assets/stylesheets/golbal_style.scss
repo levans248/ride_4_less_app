@@ -1,12 +1,25 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
 body {
   font-family: helvetica;
   background-image: url(grunge_wall_@2X.png);
   background-repeat: no-repeat;
   background-size:cover;
-  
+  margin-bottom: 60px;
 }
 
+
 #footer {
-  text-align: center;
   margin-top: 30px;
+  text-align: center;
+  bottom: -30px;
+  height: 60px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
 }

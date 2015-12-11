@@ -81,7 +81,8 @@
   margin-left: 100px;
 }
 
-.bus_info {
+#bus_map {
+  margin-left: 16% ;
 
 }
 
@@ -103,11 +104,18 @@
 }
 
 .wrapper {
-    float: left;
-    width: 40%;
-    margin: 0 auto;
-    margin-left: 100px;
+  float: left;
+  width: 40%;
+  margin: 0 auto;
+  margin-left: 100px;
 }
 
+.uber_link {
+  font-size: 20px;
+}
+
+.link_titles {
+  font-size: 30px;
+}
 
 

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Ride4LessApp</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,44 +16,20 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a class="link_titles" href="/">
                         Ride 4 Less
                     </a>
                 </li>
-            </ul>
-            <div id="uber-login">
-                <%= form_tag '/analytics', method: :post do %>
-                    <div>
-                        <p><%= label_tag :username, "Uber Login ID:" %></p>
-                        <p class="credentials"><%= text_field_tag :username %></p>
-                    </div>
-                    <div>
-                        <p><%= label_tag :password, "Uber Password:" %></p>
-                        <p class="credentials"><%= text_field_tag :password %></p>
-                    </div>
-                    <div>
-                        <p><%= submit_tag "Submit", :class=>"submit"%></p>
-                    </div>
-                <% end %>
-            </div>
-            <ul class="sidebar-nav links">
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
+                <% if current_user %>
+                    <li class="uber_link"><%= link_to "Sign Out", sign_out_path %></a></li>
+                <% else %>    
+                    <li class="uber_link"><a href="/auth/uber">Sign In With Uber</a></li>
+                <% end %>    
                 <li>
                     <a href="#">Shortcuts</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
                     <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
@@ -70,7 +47,7 @@
                         <%= yield %>
                     </div>
                 </div>
-                <div id="footer">
+                <div id="footer" class="container">
                     <footer>
                         <p>Webpage created by Luke Evans, luevans248@gmail.com</p>
                     </footer>
