@@ -1,5 +1,3 @@
-<%p @history %>
-
 <div class="ride_info">
   <%= form_tag '/ride_details', method: :post do %>
     <div>
@@ -18,15 +16,15 @@
   <ul class="uber_ride_details">
     <li class="list_spacing">Car Type: <%=@estimations[0].display_name%></li> 
     <% if @estimations[0].surge_multiplier > 1 %>
-      <li class="list_spacing">Surging: <%=@estimations[0].surge_multiplier%></li>
+      <li class="list_spacing">Surging: <%=@estimations[0].surge_multiplier%> (<a href="/ride_details/surge_view?orgin=<%=@origin%>&destination=<%=@destination%>">view map of surge </a>)</li>
     <% else %>
-      <li class="list_spacing">Surging: No</li>
+      <li class="list_spacing">Surging: No (<a href="/ride_details/surge_view?orgin=<%=@origin%>&destination=<%=@destination%>">view map of surge </a>)</li>
     <% end %>  
     <li class="list_spacing">Price Estimate: <%=@estimations[0].estimate%></li>
     <li class="list_spacing">Distance: <%=@estimations[0].distance%> miles</li>
     <li class="list_spacing">Approximate Trip Duration: <%=(@estimations[0].duration.to_f/60).ceil %> minutes</li>
   </ul>
-  <div id = "uber_map" style = "width:400px; height:450px;"></div>
+  <div id = "uber_map"></div>
 </div>
 
 <div class= "bus_info wrapper">
@@ -34,18 +32,19 @@
   <ul class="bus_ride_details">
     <li class="list_spacing">Ride Type: Bus</li> 
     <li class="list_spacing">Surging: Never</li>
-    <li class="list_spacing">Price Estimate: $2.25</li>
-    <li class="list_spacing">Distance: TBD</li>
-    <li class="list_spacing">Approximate Trip Duration: TBD%></li>
+    <% if @google_bus_data["rows"][0]["elements"][0].include? "fare" %>
+      <li class="list_spacing">Price Estimate: <%= @google_bus_data["rows"][0]["elements"][0]["fare"]["text"]%></li>
+    <% else %>
+      <li class="list_spacing">Price Estimate: Pricing Unavailable</li>
+    <% end %>  
+    <li class="list_spacing">Distance: <%= @google_bus_data["rows"][0]["elements"][0]["distance"]["text"] %></li>
+    <li class="list_spacing">Approximate Trip Duration: <%= @google_bus_data["rows"][0]["elements"][0]["duration"]["text"] %></li>
   </ul>
-  <div id = "bus_map" style = "width:400px; height:450px;"></div>
+  <div id = "bus_map"></div>
 </div>
 
 
 <script src="http://maps.google.com/maps/api/js?sensor=false">
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/distancematrix/json?origins=<%= @origin[0]%>,<%= @origin[1]%>&destinations=<%=@destination[0]%>,<%=@destination[1]%>&mode=transit&transit_mode=bus&key=AIzaSyB2G7am0bauHxGoaGR3Kub2dX9SfmqgU34">
 </script>
 
 <script  type="text/javascript" >

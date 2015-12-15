@@ -56,6 +56,8 @@
 
 #uber_map {
   margin-left: 10%;
+  width:400px; 
+  height:450px
 }
 
 #uber_map_title {
@@ -83,6 +85,8 @@
 
 #bus_map {
   margin-left: 16% ;
+  width:400px; 
+  height:450px;
 
 }
 
@@ -116,6 +120,24 @@
 
 .link_titles {
   font-size: 30px;
+}
+
+#surge_map {
+  width:700px; 
+  height:750px;
+}
+
+.labels {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 40px;     
+  border: 2px solid black;
+  white-space: nowrap;
 }
 
 
