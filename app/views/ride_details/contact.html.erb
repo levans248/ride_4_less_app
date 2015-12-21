@@ -1,0 +1,30 @@
+<img class="my_pic" src="https://media.licdn.com/media/p/8/005/07c/1f0/0f74b4b.jpg">
+
+<h3 class="contact_info">Webpage Create By: Luke Evans</h3>
+<h3 class="contact_info">Contact: luevans248@gmail.com</h3>
+
+<hr class="lines">
+<hr class="lines">
+
+<!-- <ul>
+<li class="description top">Ride 4 less allows users to easily compare the fare and trip time of uberX with public transit.</li>  
+<li class="description">Users can also login with their uber credentials and view detailed analytics of their uber ride history.</li>
+</ul> -->
+
+<div id="comment_section">
+<p class="feedback">Please submit feedback below:</p>
+
+<%= form_tag '/ride_details', method: :post do %>
+  <div>
+  <p><%= label_tag :contact_info, "Contact Info:", :class=>"contact_comment_label" %></p>
+  <p><%= text_field_tag :comment, '',  :class=>"contact_comment_section" %></p>
+  </div>
+  <div>
+  <%= label_tag :comment, "Comment:", :class=>"comment_label" %>
+  <%= text_area_tag :comment, '',  :class=>"comment_section" %>
+  </div>
+  <%= submit_tag "Submit Feedback!", :class =>"submit_comment" %>
+<% end %>
+</div>
+
+

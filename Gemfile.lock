@@ -1,3 +1,10 @@
+PATH
+  remote: ~/acltc/uber-ruby
+  specs:
+    uber-ruby (0.4.0)
+      faraday (~> 0.9.0)
+      json (~> 1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,9 +161,6 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uber-ruby (0.4.0)
-      faraday (~> 0.9.0)
-      json (~> 1.8)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -188,7 +192,7 @@ DEPENDENCIES
   spring
   thematic
   turbolinks
-  uber-ruby
+  uber-ruby!
   uglifier (>= 1.3.0)
   unirest
   web-console (~> 2.0)

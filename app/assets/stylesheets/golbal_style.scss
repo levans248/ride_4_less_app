@@ -1,8 +1,7 @@
-html {
-  position: relative;
-  min-height: 100%;
+html, 
+body {
+  height: 100%;
 }
-
 
 
 body {
@@ -16,10 +15,10 @@ body {
 
 #footer {
   margin-top: 30px;
-  text-align: center;
   bottom: -30px;
   height: 60px;
-  position: absolute;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }

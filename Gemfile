@@ -27,7 +27,7 @@ gem 'thematic'
 
 gem 'geocoder'
 
-gem 'uber-ruby', require: 'uber'
+gem 'uber-ruby', require: 'uber', :path => "~/acltc/uber-ruby"
 
 gem 'omniauth'
 
