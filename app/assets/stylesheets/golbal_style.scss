@@ -7,7 +7,7 @@ body {
 body {
   font-family: helvetica;
   background-image: url(grunge_wall_@2X.png);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size:cover;
   margin-bottom: 60px;
 }
@@ -22,3 +22,12 @@ body {
   margin-right: auto;
   text-align: center;
 }
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  margin-bottom: 40px;
+}
+

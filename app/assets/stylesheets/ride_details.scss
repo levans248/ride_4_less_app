@@ -27,7 +27,7 @@
 
 .ride_info{
   text-align: center;
-  margin-top: 140px;
+  margin-top: 40px;
   color: black;
 }
 
@@ -144,7 +144,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
+  margin-top: 35px;
   border-radius: 30px;
   height: 150px;
 }
@@ -185,11 +185,18 @@
   height: 40px;
   margin-top: 15px;
   font-size: 20px;
+  margin-left: 387px;
 }
 
 #comment_section {
   text-align: center;
-  
+  display: inline;
+}
+
+.pic_and_contact {
+  display: inline;
+  float: left;
+  margin-left: 170px;
 }
 
 .comment_label {
@@ -204,5 +211,9 @@
 .contact_comment_section {
   width: 335px;
 }
+
+
+
+
 
 

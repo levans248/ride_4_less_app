@@ -42,7 +42,6 @@ class RideDetailsController < ApplicationController
 
   end
 
-  def
 
   def surge_view
     @start_lat = params[:orgin][1..8].to_f

@@ -9,8 +9,8 @@ def create
 end
 
 def destroy
+  User.find_by(id:session[:user_id]).delete
   session[:user_id] = nil
-  User.last.delete
   redirect_to root_url, :notice => "Signed Out!"
 end
 
