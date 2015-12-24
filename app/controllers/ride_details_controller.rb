@@ -16,18 +16,18 @@ class RideDetailsController < ApplicationController
       @origin = Geocoder.coordinates(params[:origin]) 
       @destination = Geocoder.coordinates(params[:destination])
       client = Uber::Client.new do |config|
-        config.server_token  = "S2LfgFEZbyVeZUgXYQT3Iip6eXyJd-cIYe0_ONqh"
-        config.client_id     = "fGwwHohCMLIg0scb3alOrIodW_IvS4i6"
-        config.client_secret = "a83YrHsmxZY4SnqnlLrD_IP_5QZso7ZAAPanUnmX"
+        config.server_token  = ENV['SERVER_TOKEN']
+        config.client_id     = ENV['CLIENT_ID']
+        config.client_secret = ENV['CLIENT_SECRET']
       end
       
       client = Uber::Client.new do |config|
-        config.server_token  = "S2LfgFEZbyVeZUgXYQT3Iip6eXyJd-cIYe0_ONqh"
+        config.server_token  = ENV['SERVER_TOKEN']
       end
       
       @estimations = client.price_estimations(start_latitude: @origin[0], start_longitude: @origin[1], end_latitude: @destination[0], end_longitude: @destination[1])
     
-      @google_bus_data = Unirest.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{@origin[0]},#{@origin[1]}&destinations=#{@destination[0]},#{@destination[1]}&mode=transit&transit_mode=bus&units=imperial&key=AIzaSyB2G7am0bauHxGoaGR3Kub2dX9SfmqgU34").body 
+      @google_bus_data = Unirest.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{@origin[0]},#{@origin[1]}&destinations=#{@destination[0]},#{@destination[1]}&mode=transit&transit_mode=bus&units=imperial&key=#{ENV['GOOGLE_MAPS_API_KEY']}").body 
     
     end 
       
@@ -57,13 +57,13 @@ class RideDetailsController < ApplicationController
 
     def surgeAvoider (start_latitude, start_longitude, end_latitude, end_longitude)
       client = Uber::Client.new do |config|
-        config.server_token  = "S2LfgFEZbyVeZUgXYQT3Iip6eXyJd-cIYe0_ONqh"
-        config.client_id     = "fGwwHohCMLIg0scb3alOrIodW_IvS4i6"
-        config.client_secret = "a83YrHsmxZY4SnqnlLrD_IP_5QZso7ZAAPanUnmX-UMIqt58x"
+        config.server_token  = ENV['SERVER_TOKEN']
+        config.client_id     = ENV['CLIENT_ID']
+        config.client_secret = ENV['CLIENT_SECRET']
       end
 
       client = Uber::Client.new do |config|
-        config.server_token  = "S2LfgFEZbyVeZUgXYQT3Iip6eXyJd-cIYe0_ONqh"
+        config.server_token  = ENV['SERVER_TOKEN']
       end
 
       latitude_adjuster = 0.00144570
