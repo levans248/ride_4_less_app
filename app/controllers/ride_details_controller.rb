@@ -1,17 +1,6 @@
 class RideDetailsController < ApplicationController
 
   def index
-    # client = Uber::Client.new do |config|
-    #   config.server_token  = "S2LfgFEZbyVeZUgXYQT3Iip6eXyJd-cIYe0_ONqh"
-    #   config.client_id     = "fGwwHohCMLIg0scb3alOrIodW_IvS4i6"
-    #   config.client_secret = "a83YrHsmxZY4SnqnlLrD_IP_5QZso7ZAAPanUnmX"
-    #   config.bearer_token  = current_user.token
-    # end
-
-    # @history = client.history.histories[0].start_city
-
-
-
     if params[:origin] && params[:destination]  
       @origin = Geocoder.coordinates(params[:origin]) 
       @destination = Geocoder.coordinates(params[:destination])

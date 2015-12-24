@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/ride_details/surge_view', to: 'ride_details#surge_view'
   get '/ride_details/contact', to: 'ride_details#contact'
 
+  get '/uber_histories', to: 'uber_histories#index'
+
   get '/auth/uber/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy', as: :sign_out
 

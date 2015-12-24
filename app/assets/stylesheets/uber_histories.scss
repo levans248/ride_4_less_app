@@ -1,0 +1,36 @@
+// Place all the styles related to the uber_histories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.all_rides{
+  width: 70%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+.all_rides_headers {
+  text-align: center;
+}
+
+#user_profile {
+  text-align: center;
+}
+
+h1 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+img {
+  margin-bottom: 20px;
+}
+
+.user_info {
+  font-size: 20px;
+}
+
+.last_info {
+  margin-bottom: 40px;
+}

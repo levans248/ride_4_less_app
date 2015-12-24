@@ -1,0 +1,28 @@
+<div id="user_profile">
+  <h1>User Profile</h1>
+  <img src='<%= @user_profile['picture'] %>'>
+  <p class="user_info"> <%= @user_profile['first_name']%> <%= @user_profile['last_name'] %> </p>
+  <p class="user_info"> Email: <%= @user_profile['email'] %> </p>
+  <p class="user_info"> Number of Uber Rides: <%= @histories.count %> </p>
+  <p class="user_info"> <%= @average_ride_time %> </p>
+  <p class="user_info last_info"> <%= @average_distance %> </p>
+</div>
+
+
+<h1>All Uber Rides</h1>
+<table class="table-striped all_rides">
+  <tr>
+    <th class="all_rides_headers">Date</th>
+    <th class="all_rides_headers">Distance </th>
+    <th class="all_rides_headers">City</th>
+    <th class="all_rides_headers">Trip Time</th>
+  </tr>
+  <% @histories.each do |history| %>
+    <tr>
+      <td><%= history['request_time'].strftime('%m/%d/%Y') %></td>
+      <td><%= history['distance'].round(2) %> miles</td>
+      <td><%= history['start_city'][:display_name] %></td>
+      <td><%= trip_time(history['end_time'], history['start_time']) %></td>
+    </tr>
+  <% end %>
+</table>

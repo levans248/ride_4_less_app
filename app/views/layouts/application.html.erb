@@ -22,6 +22,7 @@
                 </li>
                 <% if current_user %>
                     <li class="uber_link"><%= link_to "Sign Out", sign_out_path %></a></li>
+                    <li><a href="/uber_histories">Profile Info</a></li>
                 <% else %>    
                     <li class="uber_link"><a href="/auth/uber">Sign In With Uber</a></li>
                 <% end %>    
