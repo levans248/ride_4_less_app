@@ -4,6 +4,7 @@
   <title>Ride4LessApp</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -22,41 +23,42 @@
                 </li>
                 <% if current_user %>
                     <li class="uber_link"><%= link_to "Sign Out", sign_out_path %></a></li>
-                    <li><a href="/uber_histories">Profile Info</a></li>
+                    <li><a href="/uber_histories">User Profile</a></li>
+                    <li><a href="/uber_histories/cities">Cities I've Visited With Uber</a></li>
                 <% else %>    
                     <li class="uber_link"><a href="/auth/uber">Sign In With Uber</a></li>
                 <% end %>    
                 <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
                     <a href="/ride_details/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="/ride_details/privac#">Privacy Policy</a>
+                    <a href="/ride_details/privacy">Privacy Policy</a>
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        <img class="logo" src="<%= asset_path( 'Ride_clipped_rev_1.png' ) %>">
-                        <%= yield %>
+        <div class="content_wrapper">
+            <div id="page-content-wrapper content">
+                <div class="container-fluid main">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <img class="logo" src="<%= asset_path( 'Ride_clipped_rev_1.png' ) %>">
+                            <%= yield %>
+                            <div class="push"></div>    
+                        </div>
                     </div>
+                </div>
+                <div class="footer">
+                    <footer>    
+                        <p>Webpage created by Luke Evans, luevans248@gmail.com</p>
+                    </footer>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <div id="footer" class="container">
-            <footer>
-                <p>Webpage created by Luke Evans, luevans248@gmail.com</p>
-            </footer>
-        </div>
     </div>
     <!-- /#wrapper -->
 

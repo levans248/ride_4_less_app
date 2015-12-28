@@ -7,6 +7,10 @@ class UberHistoriesController < ApplicationController
     @average_distance = average_distance
   end
 
+  def city
+    @cities = all_cities
+  end
+
 
 
   private
@@ -14,8 +18,8 @@ class UberHistoriesController < ApplicationController
   def get_client
     client = Uber::Client.new do |config|
       config.server_token  = ENV['SERVER_TOKEN']
-        config.client_id     = ENV['CLIENT_ID']
-        config.client_secret = ENV['CLIENT_SECRET']
+      config.client_id     = ENV['CLIENT_ID']
+      config.client_secret = ENV['CLIENT_SECRET']
       config.bearer_token  = current_user.token
     end
 
@@ -71,6 +75,16 @@ class UberHistoriesController < ApplicationController
       average_distance = (total_distance / count).round(2)
 
     return "Average Ride Distance: #{average_distance} miles"
+  end
+
+  def all_cities
+    cities_array = []
+    all_uber_rides.each do |ride|
+      unless cities_array.include? ride['start_city'][:display_name]
+        cities_array << ride['start_city'][:display_name]  
+      end
+    end
+    return cities_array 
   end
 
 

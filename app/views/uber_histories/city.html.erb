@@ -1,0 +1,44 @@
+<hr class="lines">
+<hr class="lines">
+
+<h3 id="uber_cities_header">You have used Uber in:</h3>
+<ul>
+  <%@cities.each do |city|%>
+    <li class="uber_cities last"><%=city %></li>
+  <%end%>
+</ul>
+
+<div id = "cities_map"></div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+
+    var citiesArray = <%= raw @cities %>;
+
+    var map = new google.maps.Map(
+      document.getElementById("cities_map"), {
+          center: {lat: 39.8282109, lng: -98.5817593},
+          zoom: 4,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+    for(var i=0; i < citiesArray.length; i++) {
+      var geocoder = new google.maps.Geocoder();
+      var address = citiesArray[i];
+      
+      geocoder.geocode( { 'address': address}, function(results, status) {
+
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        } 
+        var marker = new google.maps.Marker({
+          position: {lat: latitude, lng: longitude},
+          map: map
+        });
+      });
+    }
+  
+
+</script>

@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   post '/ride_details', to: 'ride_details#index'
   get '/ride_details/surge_view', to: 'ride_details#surge_view'
   get '/ride_details/contact', to: 'ride_details#contact'
+  get '/ride_details/privacy', to: 'ride_details#privacy'
 
   get '/uber_histories', to: 'uber_histories#index'
+  get '/uber_histories/cities', to: 'uber_histories#city'
 
   get '/auth/uber/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy', as: :sign_out

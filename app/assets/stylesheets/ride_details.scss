@@ -57,7 +57,8 @@
 #uber_map {
   margin-left: 10%;
   width:400px; 
-  height:450px
+  height:450px;
+  border: solid 3px black;
 }
 
 #uber_map_title {
@@ -87,7 +88,7 @@
   margin-left: 16% ;
   width:400px; 
   height:450px;
-
+  border: solid 3px black;
 }
 
 
@@ -212,7 +213,16 @@
   width: 335px;
 }
 
+#privacy_header {
+  width: 80%;
+  margin-left: 10%;
+}
 
+.privacy {
+  font-size: 20px;
+  margin-left: 10%;
+  width: 80%
+}
 
 
 

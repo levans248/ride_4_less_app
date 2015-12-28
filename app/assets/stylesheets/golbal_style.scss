@@ -1,26 +1,33 @@
-html, 
-body {
-  height: 100%;
+html, body {
+  position: relative;
+  min-height: 100%;
 }
 
-
 body {
-  font-family: helvetica;
+  font-family: 'Courgette', cursive;
   background-image: url(grunge_wall_@2X.png);
   background-repeat: repeat;
   background-size:cover;
   margin-bottom: 60px;
 }
 
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -100px;
+  }
 
-#footer {
-  margin-top: 30px;
-  bottom: -30px;
-  height: 60px;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
+.footer, .push {
+    height: 100px; 
+}
+
+.footer {
   text-align: center;
+  padding-top: 80px;
+  width: auto;
+  height: 100px;
+  margin-bottom: 0;
 }
 
 .logo {
