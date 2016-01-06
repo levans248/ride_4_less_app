@@ -8,7 +8,9 @@ class UberHistoriesController < ApplicationController
   end
 
   def city
-    @cities = all_cities
+    @cities = all_cities 
+    @cities_ride_count = all_cities_hash
+    pearson_correlation_coefficient
   end
 
 
@@ -85,6 +87,43 @@ class UberHistoriesController < ApplicationController
       end
     end
     return cities_array 
+  end
+
+  def all_cities_hash
+    cities_hash = Hash.new(0)
+    all_uber_rides.each do |ride|
+      cities_hash[ride['start_city'][:display_name]] += 1
+    end
+
+    return cities_hash
+  end
+
+  def pearson_correlation_coefficient
+    new_years_data = UberNewYearsDatum.all
+    n = UberNewYearsDatum.count
+    sum_of_x = 0
+    sum_of_y = 0
+    sum_of_xy = 0
+    sum_of_x_squared = 0
+    sum_of_y_squared = 0
+
+    new_years_data.each do |ride_request|
+      sum_of_x += ride_request.surge_multiplier
+      sum_of_y += ride_request.time_estimate
+      sum_of_xy += (ride_request.surge_multiplier + ride_request.time_estimate)
+      sum_of_x_squared += (ride_request.surge_multiplier * ride_request.surge_multiplier)
+      sum_of_y_squared += (ride_request.time_estimate * ride_request.time_estimate)
+    end
+
+    numerator = (n * sum_of_xy) - (sum_of_x * sum_of_y)
+    denominator = ((n * sum_of_x_squared) - sum_of_x_squared)*((n * sum_of_y_squared) - sum_of_y_squared)
+    square_root_of_denominator = Math.sqrt(denominator)
+
+    r = numerator/square_root_of_denominator
+
+    puts r
+
+    return r
   end
 
 

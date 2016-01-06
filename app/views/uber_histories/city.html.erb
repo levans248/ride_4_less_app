@@ -3,8 +3,8 @@
 
 <h3 id="uber_cities_header">You have used Uber in:</h3>
 <ul>
-  <%@cities.each do |city|%>
-    <li class="uber_cities last"><%=city %></li>
+  <%@cities_ride_count.each do |city, number_of_rides|%>
+    <li class="uber_cities last"><%= city %> (<%=number_of_rides%>)</li>
   <%end%>
 </ul>
 

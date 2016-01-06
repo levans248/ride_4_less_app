@@ -60,5 +60,13 @@ img {
   font-size: 20px;
   margin-left: 23%;
 }
+
+.table-striped td, .table-striped th {
+    border: none;
+}
+
+table.table-striped {
+    border: 3px solid black;
+}
   
 

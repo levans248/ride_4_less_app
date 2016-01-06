@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210212517) do
+ActiveRecord::Schema.define(version: 20151231000307) do
+
+  create_table "uber_new_years_data", force: :cascade do |t|
+    t.string   "ride_type",        limit: 255
+    t.string   "neighborhood",     limit: 255
+    t.float    "surge_multiplier", limit: 24
+    t.integer  "time_estimate",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",      limit: 255

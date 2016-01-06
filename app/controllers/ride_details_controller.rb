@@ -22,6 +22,11 @@ class RideDetailsController < ApplicationController
       
   end
 
+  def uber_nye_data
+    @data2015 = data_from_2015
+
+  end
+
   # privacy action and view required by uber api
   def privacy
 
@@ -120,6 +125,17 @@ class RideDetailsController < ApplicationController
 
       return surge_coordinates_hash
 
+    end
+
+    def data_from_2015
+      all_data = UberNewYearsDatum.all
+      requests = []
+      nob_hill_requests = []
+      all_data.each do |ride|
+        requests << [ride.time_estimate, ride.surge_multiplier]  
+      end
+
+      return requests
     end
   
 

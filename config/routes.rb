@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/ride_details/surge_view', to: 'ride_details#surge_view'
   get '/ride_details/contact', to: 'ride_details#contact'
   get '/ride_details/privacy', to: 'ride_details#privacy'
+  get '/ride_details/uber_nye_data', to: 'ride_details#uber_nye_data'
 
   get '/uber_histories', to: 'uber_histories#index'
   get '/uber_histories/cities', to: 'uber_histories#city'
