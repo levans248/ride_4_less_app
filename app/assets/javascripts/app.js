@@ -1,6 +1,6 @@
 (function() {
   "use strict";
 
-  angular.module("app", ["highcharts-ng"]);
+  angular.module("app", []);
 
 }());

@@ -1,75 +1,19 @@
-<div id="container" style="width:100%; height:400px;"></div>
+<div ng-app="app">
+    <div ng-controller="newYearsRideDataController" ng-init="surgeVsTime('all')">
+        <div class="surge_vs_time_buttons">
+            <button ng-click="surgeVsTime('all')">All Data</button>
+            <button ng-click="surgeVsTime('Nob Hill')">Nob Hill</button>  
+            <button ng-click="surgeVsTime('Marina')">Marina</button>
+            <button ng-click="surgeVsTime('Mission')">Mission</button>
+            <button ng-click="surgeVsTime('Soma')">Soma</button>
+            <button ng-click="surgeVsTime('Haight')">Haight-Ashbury</button>
+            <button ng-click="surgeVsTime('Richmond')">Richmond</button>
+        </div>
+
+        <div id="container" class="high_chart"></div>
+
+    </div>
+</div>
 
 
-<script>
-$(function () { 
-    var data2015 = <%= @data2015 %>;
-    var dataArray2015 = [];
-    $('#container').highcharts({
-        chart: {
-            type: 'scatter',
-            zoomType: 'xy'
-        },
-        title: {
-            text: 'Uber Surge Multiplier vs. Wait Time'
-        },
-        subtitle: {
-            text: 'Uber Data Collected Dec. 30th, 2015 - Jan 2nd, 2016'
-        },
-        xAxis: {
-            title: {
-                enabled: true,
-                text: 'Wait Time (seconds)'
-            },
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true
-        },
-         yAxis: {
-            title: {
-                text: 'Surge Multiplier'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'left',
-            verticalAlign: 'top',
-            x: 100,
-            y: 70,
-            floating: true,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
-            borderWidth: 1
-        },
-        plotOptions: {
-            scatter: {
-                marker: {
-                    radius: 5,
-                    states: {
-                        hover: {
-                            enabled: true,
-                            lineColor: 'rgb(100,100,100)'
-                        }
-                    }
-                },
-                states: {
-                    hover: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x} cm, {point.y} kg'
-                }
-            }
-        },
-        series: [{
-            name: 'Dec. 30, 2015',
-            color: 'rgba(223, 83, 83, .5)',
-            data: data2015
-        }]
-    });
-});
 
-</script>
