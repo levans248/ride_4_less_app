@@ -1,4 +1,3 @@
-
 <div class="ride_info">
   <%= form_tag '/ride_details', method: :post do %>
     <div>
@@ -10,6 +9,7 @@
       <%= submit_tag "GET RIDE INFO", :id=>"request-info" %>
   <% end %>
 </div>
+
 
 <% if params[:commit] %>
   <div class="uber_info wrapper" >

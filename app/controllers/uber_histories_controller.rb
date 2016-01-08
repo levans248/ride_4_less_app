@@ -1,8 +1,8 @@
 class UberHistoriesController < ApplicationController
 
   def index
-    @histories = all_uber_rides
     @user_profile = get_client.me
+    @histories = all_uber_rides
     @average_ride_time = average_ride_time
     @average_distance = average_distance
   end

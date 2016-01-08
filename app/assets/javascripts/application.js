@@ -15,4 +15,6 @@
 //= require theme/bootstrap
 //= require angular
 //= require highstock.src
+//= require angular-animate
+//= require app
 //= require_tree .

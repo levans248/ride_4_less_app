@@ -39,6 +39,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'whenever', :require => false
 
+gem 'seed_dump'
+
 
 
 # Use ActiveModel has_secure_password
