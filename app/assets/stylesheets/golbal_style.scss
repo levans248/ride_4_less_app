@@ -1,6 +1,6 @@
 html, body {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
@@ -15,19 +15,18 @@ body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -100px;
-  }
-
-.footer, .push {
-    height: 100px; 
+  width: auto;
 }
 
-.footer {
+// .footer, .push {
+//     height: 100px; 
+// }
+
+#footer {
   text-align: center;
-  padding-top: 80px;
+  // padding-top: 80px;
   width: auto;
-  height: 100px;
-  margin-bottom: 0;
+  margin: auto;
 }
 
 .logo {
@@ -37,6 +36,12 @@ body {
   margin-top: 75px;
   margin-bottom: 40px;
 }
+
+.flash {
+  text-align: center;
+}
+
+
 
 
 

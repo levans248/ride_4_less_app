@@ -1,10 +1,10 @@
 <div class="ride_info">
   <%= form_tag '/ride_details', method: :post do %>
     <div>
-      <%= text_field_tag :origin, "Pickup Location", :class=>"address_details" %>    
+      <%= text_field_tag :origin, nil, placeholder: "Pick-Up Location", :class=>"address_details" %>    
     </div>
     <div>
-      <%= text_field_tag :destination, "Dropoff Location", :class=>"address_details" %>    
+      <%= text_field_tag :destination, nil, placeholder: "Drop Off Location", :class=>"address_details" %>    
     </div>
       <%= submit_tag "GET RIDE INFO", :id=>"request-info" %>
   <% end %>
@@ -19,7 +19,7 @@
       <% if @estimations[0].surge_multiplier > 1 %>
         <li class="list_spacing">Surging: <%=@estimations[0].surge_multiplier%> (<a href="/ride_details/surge_view?orgin=<%=@origin%>&destination=<%=@destination%>">view map of surge </a>)</li>
       <% else %>
-        <li class="list_spacing">Surging: No (<a href="/ride_details/surge_view?orgin=<%=@origin%>&destination=<%=@destination%>">view map of surge </a>)</li>
+        <li class="list_spacing">Surging: No (<a href="" data-toggle="modal" data-target="#myModal">view map of surge </a>)</li>
       <% end %>  
       <li class="list_spacing">Price Estimate: <%=@estimations[0].estimate%></li>
       <li class="list_spacing">Distance: <%=@estimations[0].distance%> miles</li>
@@ -44,9 +44,26 @@
     <div id = "bus_map"></div>
   </div>
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Uber Surge Relative to Pick Up Address</h4>
+        </div>
+        <div class="modal-body">
+          <div id = "surge_map"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script src="http://maps.google.com/maps/api/js?sensor=false">
-  </script>
+
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
 
   <script  type="text/javascript" >
     // for uber map
@@ -103,10 +120,72 @@
         alert("Bus directions failed: " + status)
       }
     });
+  </script>
+
+  <script type="text/javascript">
+
+  var surgeMap;
+  var startLat = <%= @start_lat %>;
+  var startLng = <%= @start_lng %>;
+  var surgeArray = <%= @surge_hash %>;
+
+  var surgeMap = new google.maps.Map(
+    document.getElementById("surge_map"), {
+        center: new google.maps.LatLng(startLat, startLng),
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+  for(var i=0; i < surgeArray.length; i++) {
+    var marker = new MarkerWithLabel({
+      position: new google.maps.LatLng(surgeArray[i][0][0], surgeArray[i][0][1]),
+      labelContent: surgeArray[i][1],
+      labelAnchor: new google.maps.Point(22, 0),
+      labelClass: "labels",
+      labelStyle: {
+        opacity: 0.75
+      },
+      zIndex: 999999,
+      map: surgeMap
+    })
+  }
+
+  var pinColor = "008000";
+  var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0,0),
+      new google.maps.Point(10, 34));
+  var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+      new google.maps.Size(40, 37),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(12, 35));
+
+  var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(startLat, startLng), 
+      map: surgeMap,
+      icon: pinImage,
+      shadow: pinShadow
+  });
+
+  google.maps.event.addDomListener(window, "resize", resizingMap());
+
+  $('#myModal').on('show.bs.modal', function() {
+     resizeMap();
+  })
+
+  function resizeMap() {
+     if(typeof map =="undefined") return;
+     setTimeout( function(){resizingMap();} , 400);
+  }
+
+  function resizingMap() {
+     if(typeof map =="undefined") return;
+     var center = surgeMap.getCenter();
+     google.maps.event.trigger(surgeMap, "resize");
+     surgeMap.setCenter(center); 
+  }
 
 
-
-    
   </script>
 
 <%end%>

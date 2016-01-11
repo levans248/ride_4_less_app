@@ -16,5 +16,6 @@
 //= require angular
 //= require highstock.src
 //= require angular-animate
+//= require jquery.blockUI.js
 //= require app
 //= require_tree .

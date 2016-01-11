@@ -1,0 +1,23 @@
+// Place all the styles related to the new_years_data controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.high_chart {
+  width:80%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.surge_vs_time_buttons {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.toggle_chart_buttons {
+  width: 125px;
+  border: solid black 1px;
+}
