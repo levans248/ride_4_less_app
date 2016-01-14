@@ -1,0 +1,24 @@
+<div ng-app="app">
+    <div ng-controller="newYearsRideDataController" ng-init="fetchNewYearsData('all')">
+        <div class="surge_vs_time_buttons">
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('all')">All Data</button>
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Nob Hill')">Nob Hill</button>  
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Marina')">Marina</button>
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Mission')">Mission</button>
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Soma')">Soma</button>
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Haight')">Haight-Ashbury</button>
+            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Richmond')">Richmond</button>
+        </div>
+
+
+        <div id="new_years_data_graph" class="high_chart"></div>
+        <h4 class="chart_instructions" ng-show="showChartInstructions">*Click neighborhoods on right of graph to add/remove from the graph.</h4>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var linkSelected = "<%=params[:linkClicked]%>";
+
+</script>

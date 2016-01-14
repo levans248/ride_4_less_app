@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/surge_vs_wait_time', to: 'new_years_data#surge_vs_wait_time'
-  get '/surge_vs_time_of_day', to: 'new_years_data#surge_vs_time_of_day'
+  get '/new_years_data', to: 'new_years_data#new_years_data'
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

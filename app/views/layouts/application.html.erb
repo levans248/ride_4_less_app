@@ -18,29 +18,56 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a class="link_titles" href="/">
-                        Ride 4 Less
+                        Ride 4 Less<img id="toolbar_image" src="<%= asset_path( 'bus_720.png' ) %>">
                     </a>
                 </li>
                 <% if current_user %>
                     <li class="uber_link"><%= link_to "Sign Out", sign_out_path %></a></li>
-                    <li><a href="/uber_histories">User Profile</a></li>
-                    <li><a href="/uber_histories/cities">Cities I've Visited With Uber</a></li>
+                    <div id="profile_link_styling">
+                        <p class="profile_links"><a href="/uber_histories">User Profile</a></p>
+                        <p class="profile_links"><a href="/uber_histories/cities">Cities I've Visited With Uber</a></p>
+                    <div>
                     <hr>
                 <% else %>    
                     <li class="uber_link"><a href="/auth/uber">Sign In With Uber</a></li>
                 <% end %>
-                <li>
-                    <a href="/surge_vs_time_of_day">NYE Data: Surge Time Series Plots</a>
-                </li>
-                <li>
-                    <a href="/surge_vs_wait_time?linkClicked=surgeVsWaitTime">NYE Data: Surge vs. Wait Time</a>
-                </li>    
-                <li>
-                    <a href="/ride_details/contact">Contact</a>
-                </li>
-                <li>
-                    <a href="/ride_details/privacy">Privacy Policy</a>
-                </li>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                SF New Years Eve Data
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <p>
+                                    <a href="/new_years_data?linkClicked=surge_vs_time_of_day">NYE: Surge Time Series Plots</a>
+                                </p>
+                                <p>
+                                    <a href="/new_years_data?linkClicked=wait_time_vs_time_of_day">NYE: Wait-Time Time Series Plot</a>
+                                </p>
+                                <p>
+                                    <a href="/new_years_data?linkClicked=surge_vs_wait_time">NYE: Surge vs. Wait Time</a>
+                                </p>
+                            </div>
+                        </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Uber Around The World
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                TEST TEST TEST TEST
+                            </div>
+                        </div>
+                    </div>
+                </div>    
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -85,6 +112,9 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $('#collapseOne').collapse("hide");
+    
     </script>
 
 

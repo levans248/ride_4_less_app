@@ -41,7 +41,37 @@ body {
   text-align: center;
 }
 
+.panel-heading {
+  background: black !important;
+  border: none !important;
+}
 
+.panel-heading a {
+  color: grey;
+}
 
+.panel-heading h4 {
+  font-size: 20px;
+}
+
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+}
+
+#toolbar_image {
+  margin-top: 13px;
+  margin-left: 12px;
+  width:32px;
+  height: 32px;
+}
+
+.profile_links {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+#profile_link_styling {
+  background: white;
+}
 
 

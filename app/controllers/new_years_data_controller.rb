@@ -1,12 +1,9 @@
 class NewYearsDataController < ApplicationController
 
-  def surge_vs_wait_time
+  def new_years_data
     
   end
 
-  def surge_vs_time_of_day
-    
-  end
 
 
 end

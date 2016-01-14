@@ -1,7 +1,7 @@
 class RideDetailsController < ApplicationController
 
-  def index
-    if params[:origin] && params[:destination]  
+  def index  
+    if params[:origin] && params[:destination]   
       @origin = Geocoder.coordinates(params[:origin]) 
       @destination = Geocoder.coordinates(params[:destination])
       client = Uber::Client.new do |config|
