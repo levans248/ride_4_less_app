@@ -1,0 +1,54 @@
+<div ng-app="app">
+  <div ng-controller="uberHistoriesController">
+
+    <div id="profile_data" class="user_profile" ng-show="profile">
+      <h1>User Profile:</h1>
+      <img ng-src="{{allRideData[0]['picture']}}">
+      <p class="user_info"> {{allRideData[0]['first_name']}} {{allRideData[0]['last_name']}}</p>
+      <p class="user_info"> Email: {{allRideData[0]['email']}}</p>
+      <p class="user_info"> Number of Uber Rides: {{allRideData[1].length}}</p>
+      <p class="user_info"> {{allRideData[2]}}</p>
+      <p class="user_info last_info"> {{allRideData[3]}}</p>
+
+      <h1>All Uber Rides</h1>
+      <table class="table-striped all_rides">
+        <thead>
+          <tr>
+            <th class="all_rides_headers">Date</th>
+            <th class="all_rides_headers">Distance </th>
+            <th class="all_rides_headers">City</th>
+            <th class="all_rides_headers">Trip Time</th>
+            <th class="all_rides_headers">Minimum UberX Fare</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="ride in allRideData[1]">
+        </tbody>
+      </table>  
+    </div>
+
+
+    <div ng-show="citiesMap">
+      <hr class="lines">
+      <hr class="lines">
+      <h3 id="uber_cities_header">You have used Uber in:</h3>
+      <ul>
+        <li class="uber_cities last" ng-repeat="(city, count) in all_data[1]">
+          {{city}}:{{count}}
+        </li>
+      </ul>
+      <div id = "cities_map" ng-init="userHistoryData()"></div>
+    </div>
+
+    <div ng-show="timeTrends">
+      <div id="uber_time_trends" class="high_chart" ng-init="userHistoryData()"></div>
+    </div>
+
+
+  </div>  
+</div>
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var linkSelected = "<%= params[:linkClicked] %>";
+</script>

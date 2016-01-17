@@ -22,13 +22,6 @@ body {
 //     height: 100px; 
 // }
 
-#footer {
-  text-align: center;
-  // padding-top: 80px;
-  width: auto;
-  margin: auto;
-}
-
 .logo {
   display: block;
   margin-left: auto;
@@ -65,13 +58,37 @@ body {
   height: 32px;
 }
 
+.top_profile_link {
+  padding-top: 10px;
+}
+
+.bottom_profile_link {
+  margin-bottom: -3px;
+}
+
+
 .profile_links {
   font-size: 14px;
-  margin-top: 5px;
+  margin-left: -2px;
 }
 
 #profile_link_styling {
   background: white;
+}
+
+.geral {
+    min-height:100%;
+    position:relative;
+    width:800px;
+}
+
+#footer {
+    padding-top: 15px;
+    position:relative;
+    bottom:0;
+    width:25%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 

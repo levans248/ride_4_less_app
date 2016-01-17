@@ -41,6 +41,8 @@ gem 'whenever', :require => false
 
 gem 'seed_dump'
 
+gem 'jquery-ui-rails'
+
 
 
 # Use ActiveModel has_secure_password

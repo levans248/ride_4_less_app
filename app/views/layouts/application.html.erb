@@ -21,26 +21,39 @@
                         Ride 4 Less<img id="toolbar_image" src="<%= asset_path( 'bus_720.png' ) %>">
                     </a>
                 </li>
-                <% if current_user %>
-                    <li class="uber_link"><%= link_to "Sign Out", sign_out_path %></a></li>
-                    <div id="profile_link_styling">
-                        <p class="profile_links"><a href="/uber_histories">User Profile</a></p>
-                        <p class="profile_links"><a href="/uber_histories/cities">Cities I've Visited With Uber</a></p>
-                    <div>
-                    <hr>
-                <% else %>    
-                    <li class="uber_link"><a href="/auth/uber">Sign In With Uber</a></li>
-                <% end %>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Personalized Uber Ride Analytics
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <% if current_user %>
+                                    <div class="profile_link_styling">
+                                        <p><a class="profile_links top_profile_link"><%= link_to "Sign Out", sign_out_path %></a></p>
+                                        <p class="profile_links"><a href="/uber_histories">User Profile</a></p>
+                                        <p class="profile_links"><a href="/uber_histories/uber_data?linkClicked=cities_visited">Cities I've Visited With Uber</a></p>
+                                        <p class="profile_links bottom_profile_link"><a href="/uber_histories/uber_data?linkClicked=time_trends">Uber Usage Time Trends</a></p>
+                                    </div>
+                                <% else %>    
+                                    <p class="profile_links bottom_profile_link"><a href="/auth/uber">Sign In With Uber</a></p>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 SF New Years Eve Data
                             </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <p>
                                     <a href="/new_years_data?linkClicked=surge_vs_time_of_day">NYE: Surge Time Series Plots</a>
@@ -54,14 +67,14 @@
                             </div>
                         </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
+                        <div class="panel-heading" role="tab" id="headingThree">
                             <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Uber Around The World
                             </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                             <div class="panel-body">
                                 TEST TEST TEST TEST
                             </div>
@@ -96,7 +109,6 @@
                 </div>
             </div>
         </div>
-        <div class="push"></div>
         <!-- /#page-content-wrapper -->
     </div>
         <div id="footer">
@@ -113,8 +125,25 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $('#collapseOne').collapse("hide");
-    
+    $(document).ready(function () {
+        //when a group is shown, save it as the active accordion group
+        $("#accordion").on('shown.bs.collapse', function () {
+            var active = $("#accordion .in").attr('id');
+            $.cookie('activeAccordionGroup', active);
+          //  alert(active);
+        });
+        $("#accordion").on('hidden.bs.collapse', function () {
+            $.removeCookie('activeAccordionGroup');
+        });
+        var last = $.cookie('activeAccordionGroup');
+        if (last != null) {
+            //remove default collapse settings
+            $("#accordion .panel-collapse").removeClass('in');
+            //show the account_last visible group
+            $("#" + last).addClass("in");
+        }
+    });
+
     </script>
 
 

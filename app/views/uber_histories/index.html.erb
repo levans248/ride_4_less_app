@@ -1,6 +1,7 @@
 <hr class="lines">
 <hr class="lines">
 
+
 <div id="user_profile">
   <h1>User Profile</h1>
   <img src='<%= @user_profile['picture'] %>'>
@@ -9,27 +10,26 @@
   <p class="user_info"> Number of Uber Rides: <%= @histories.count %> </p>
   <p class="user_info"> <%= @average_ride_time %> </p>
   <p class="user_info last_info"> <%= @average_distance %> </p>
+
+  <h1>All Uber Rides</h1>
+  <table class="table-striped all_rides">
+    <tr>
+      <th class="all_rides_headers">Date</th>
+      <th class="all_rides_headers">Distance </th>
+      <th class="all_rides_headers">City</th>
+      <th class="all_rides_headers">Trip Time</th>
+      <th class="all_rides_headers">Minimum UberX Fare</th>
+    </tr>
+    <% @histories.each do |history| %>
+      <tr>
+        <td><%= history['request_time'].strftime('%m/%d/%Y') %></td>
+        <td><%= history['distance'].round(2) %> miles</td>
+        <td><%= history['start_city'][:display_name] %></td>
+        <td><%= trip_time(history['end_time'], history['start_time']) %></td>
+        <td><%= min_fare(history['start_city'][:display_name], history['distance'], (history['end_time'] - history['start_time'])) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 
-<h1>All Uber Rides</h1>
-<table class="table-striped all_rides">
-  <tr>
-    <th class="all_rides_headers">Date</th>
-    <th class="all_rides_headers">Ride Type</th>
-    <th class="all_rides_headers">Distance </th>
-    <th class="all_rides_headers">City</th>
-    <th class="all_rides_headers">Trip Time</th>
-    <th class="all_rides_headers">Minimum UberX Fare</th>
-  </tr>
-  <% @histories.each do |history| %>
-    <tr>
-      <td><%= history['request_time'].strftime('%m/%d/%Y') %></td>
-      <td><%= ride_type(history["product_id"])%></td>
-      <td><%= history['distance'].round(2) %> miles</td>
-      <td><%= history['start_city'][:display_name] %></td>
-      <td><%= trip_time(history['end_time'], history['start_time']) %></td>
-      <td><%= min_fare(history['start_city'][:display_name], history['distance'], (history['end_time'] - history['start_time'])) %></td>
-    </tr>
-  <% end %>
-</table>

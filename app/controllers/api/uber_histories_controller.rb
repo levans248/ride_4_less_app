@@ -1,18 +1,24 @@
-class UberHistoriesController < ApplicationController
+class Api::UberHistoriesController < ApplicationController
 
   def index
-    @user_profile = get_client.me
-    @histories = all_uber_rides
-    @average_ride_time = average_ride_time
-    @average_distance = average_distance
+    if params[:linkClicked] == "time_trends"
+      @time_patterns = time_patterns.to_json
+      render json: @time_patterns
+    elsif params[:linkClicked] == "cities_visited"
+      cities = all_cities 
+      cities_ride_count = all_cities_hash
+      @all_cities_data =[cities, cities_ride_count].to_json
+      render json: @all_cities_data
+    elsif params[:linkClicked] == "profile"
+      user_profile = get_client.me
+      histories = all_uber_rides
+      @profile_data = [user_profile, histories, average_ride_time, average_distance].to_json
+      render json: @profile_data
+    end
   end
 
-  def data
 
-  end
-
-
-  private
+  private 
 
   def get_client
     client = Uber::Client.new do |config|
@@ -155,6 +161,5 @@ class UberHistoriesController < ApplicationController
 
     return r
   end
-
 
 end

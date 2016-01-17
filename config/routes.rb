@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/ride_details', to: 'ride_details#index'
   post '/ride_details', to: 'ride_details#index'
   get '/ride_details/surge_view', to: 'ride_details#surge_view'
-  get '/ride_details/contact', to: 'ride_details#contact'
   get '/ride_details/privacy', to: 'ride_details#privacy'
-  get '/ride_details/uber_nye_data', to: 'ride_details#uber_nye_data'
 
   get '/uber_histories', to: 'uber_histories#index'
-  get '/uber_histories/cities', to: 'uber_histories#city'
+  get '/uber_histories/uber_data', to:'uber_histories#uber_data'
+  
+  get '/new_years_data', to: 'new_years_data#new_years_data'
 
   get '/auth/uber/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy', as: :sign_out
@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/new_years_data', to: 'new_years_data#new_years_data'
+  namespace :api do
+    resources :uber_histories
+  end  
+
   
 
 

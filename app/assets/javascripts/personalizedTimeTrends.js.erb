@@ -1,0 +1,231 @@
+function uberTimeTrends(time_trends_array) {
+    var count = time_trends_array[0];
+    var mid_one = (time_trends_array[1]["1"]/count)*100;
+    console.log(mid_one);
+    var two_three = (time_trends_array[1]["2"]/count)*100;
+    var four_five = (time_trends_array[1]["3"]/count)*100;
+    var six_seven = (time_trends_array[1]["4"]/count)*100;
+    var eight_nine = (time_trends_array[1]["5"]/count)*100;
+    var ten_eleven = (time_trends_array[1]["6"]/count)*100;
+    var twelve_thirteen = (time_trends_array[1]["7"]/count)*100;
+    var fourteen_fifteen = (time_trends_array[1]["8"]/count)*100;
+    var sixteen_seventeen = (time_trends_array[1]["9"]/count)*100;
+    var eighteen_nineteen = (time_trends_array[1]["10"]/count)*100;
+    var twenty_twentyOne = (time_trends_array[1]["11"]/count)*100;
+    var twentyTwo_twentyThree = (time_trends_array[1]["12"]/count)*100;
+
+    Highcharts.setOptions({
+       colors: ["#DDDF0D", "#7798BF", "#55BF3B", "#DF5353", "#aaeeee", "#ff0066", "#eeaaee", 
+          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+       chart: {
+          backgroundColor: {
+             linearGradient: [0, 0, 0, 400],
+             stops: [
+                [0, 'rgb(96, 96, 96)'],
+                [1, 'rgb(16, 16, 16)']
+             ]
+          },
+          borderWidth: 0,
+          borderRadius: 15,
+          plotBackgroundColor: null,
+          plotShadow: false,
+          plotBorderWidth: 0
+       },
+       title: {
+          style: { 
+             color: '#FFF',
+             font: '16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+          }
+       },
+       subtitle: {
+          style: { 
+             color: '#DDD',
+             font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+          }
+       },
+       xAxis: {
+          gridLineWidth: 0,
+          lineColor: '#999',
+          tickColor: '#999',
+          labels: {
+             style: {
+                color: '#999',
+                fontWeight: 'bold'
+             }
+          },
+          title: {
+             style: {
+                color: '#AAA',
+                font: 'bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+             }            
+          }
+       },
+       yAxis: {
+          alternateGridColor: null,
+          minorTickInterval: null,
+          gridLineColor: 'rgba(255, 255, 255, .1)',
+          lineWidth: 0,
+          tickWidth: 0,
+          labels: {
+             style: {
+                color: '#999',
+                fontWeight: 'bold'
+             }
+          },
+          title: {
+             style: {
+                color: '#AAA',
+                font: 'bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+             }            
+          }
+       },
+       legend: {
+          itemStyle: {
+             color: '#CCC'
+          },
+          itemHoverStyle: {
+             color: '#FFF'
+          },
+          itemHiddenStyle: {
+             color: '#333'
+          }
+       },
+       credits: {
+          style: {
+             right: '50px'
+          }
+       },
+       labels: {
+          style: {
+             color: '#CCC'
+          }
+       },
+       tooltip: {
+          backgroundColor: {
+             linearGradient: [0, 0, 0, 50],
+             stops: [
+                [0, 'rgba(96, 96, 96, .8)'],
+                [1, 'rgba(16, 16, 16, .8)']
+             ]
+          },
+          borderWidth: 0,
+          style: {
+             color: '#FFF'
+          }
+       },
+       
+       
+       plotOptions: {
+          line: {
+             dataLabels: {
+                color: '#CCC'
+             },
+             marker: {
+                lineColor: '#333'
+             }
+          },
+          spline: {
+             marker: {
+                lineColor: '#333'
+             }
+          },
+          scatter: {
+             marker: {
+                lineColor: '#333'
+             }
+          }
+       },
+       
+       toolbar: {
+          itemStyle: {
+             color: '#CCC'
+          }
+       }
+    }); 
+
+    $(function () {
+        $('#uber_time_trends').highcharts({
+            chart: {
+                type: 'column',
+                borderWidth: 3,
+                borderColor: 'black',
+                borderRadius: 0
+            },
+            title: {
+                text: 'Uber Usage Time Trends'
+            },
+            subtitle: {
+                text: count + " total rides"
+            },
+            xAxis: {
+                type: 'category',
+                text: 'Time of Day'
+            },
+            yAxis: {
+                title: {
+                    text: 'Percent of Total Rides Taken'
+                }
+
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.y:.1f}%'
+                    }
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+            },
+
+            series: [{
+                name: 'Time Block',
+                colorByPoint: true,
+                data: [{
+                    name: '12AM - 1AM',
+                    y: mid_one,
+                }, {
+                    name: '2AM - 3AM',
+                    y: two_three
+                }, {
+                    name: '4AM - 5AM',
+                    y: four_five
+                }, {
+                    name: '6AM - 7AM',
+                    y: six_seven
+                }, {
+                    name: '8AM - 9AM',
+                    y: eight_nine
+                }, {
+                    name: '10AM - 11AM',
+                    y: ten_eleven
+                }, {
+                    name: '12PM - 1PM',
+                    y: twelve_thirteen
+                }, {
+                    name: '2PM - 3AM',
+                    y: fourteen_fifteen
+                }, {
+                    name: '4PM - 5PM',
+                    y: sixteen_seventeen
+                }, {
+                    name: '6PM - 7PM',
+                    y: eighteen_nineteen
+                }, {
+                    name: '8PM - 9PM',
+                    y: twenty_twentyOne
+                }, {
+                    name: '10PM - 11PM',
+                    y: twentyTwo_twentyThree
+                }]
+            }],
+        });
+    });
+}

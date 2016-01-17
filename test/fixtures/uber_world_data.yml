@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  distance: 1.5
+  estimate: MyString
+  ride_type: MyString
+  surge_multiplier: 1.5
+  city: MyString
+
+two:
+  distance: 1.5
+  estimate: MyString
+  ride_type: MyString
+  surge_multiplier: 1.5
+  city: MyString

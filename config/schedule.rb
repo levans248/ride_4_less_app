@@ -28,3 +28,20 @@
 #   runner "UberNewYearsDatum.new_years_data(\"Richmond\")"
 #   runner "UberNewYearsDatum.new_years_data(\"Haight\")"
 # end
+
+every 1.minute do
+  runner "UberWorldDatum.uber_world_data(\"Nob Hill\")"
+  runner "UberWorldDatum.uber_world_data(\"New Orleans\")"
+  runner "UberWorldDatum.uber_world_data(\"Times Square, NY\")"
+  runner "UberWorldDatum.uber_world_data(\"Chicago\")"
+  runner "UberWorldDatum.uber_world_data(\"Hollywood\")"
+  runner "UberWorldDatum.uber_world_data(\"Seattle\")"
+  runner "UberWorldDatum.uber_world_data(\"Denver\")"
+  runner "UberWorldDatum.uber_world_data(\"Boston\")"
+  runner "UberWorldDatum.uber_world_data(\"Paris\")"
+  runner "UberWorldDatum.uber_world_data(\"London\")"
+  runner "UberWorldDatum.uber_world_data(\"Perth\")"
+  runner "UberWorldDatum.uber_world_data(\"Hong Kong\")"
+  runner "UberWorldDatum.uber_world_data(\"Bangkok\")"
+  runner "UberWorldDatum.uber_world_data(\"Rio de Janeiro\")"
+end

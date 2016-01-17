@@ -1,0 +1,29 @@
+function uberCitiesMap (json_data) {
+  var citiesArray = json_data;
+
+  var map = new google.maps.Map(
+    document.getElementById("cities_map"), {
+        center: {lat: 39.8282109, lng: -98.5817593},
+        zoom: 4,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+  for(var i=0; i < citiesArray[0].length; i++) {
+    var geocoder = new google.maps.Geocoder();
+    var address = citiesArray[0][i];
+    
+    geocoder.geocode( { 'address': address}, function(results, status) {
+
+    if (status == google.maps.GeocoderStatus.OK) {
+      var latitude = results[0].geometry.location.lat();
+      var longitude = results[0].geometry.location.lng();
+      } 
+      var marker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map
+      });
+      console.log(marker);
+    });
+  }
+
+}

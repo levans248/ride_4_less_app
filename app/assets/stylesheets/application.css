@@ -15,6 +15,7 @@
  *= require theme/bootstrap
  *= require theme/simple-sidebar
  *= require animate
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
