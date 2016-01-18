@@ -1,24 +1,60 @@
 <div ng-app="app">
-    <div ng-controller="newYearsRideDataController" ng-init="fetchNewYearsData('all')">
-        <div class="surge_vs_time_buttons">
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('all')">All Data</button>
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Nob Hill')">Nob Hill</button>  
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Marina')">Marina</button>
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Mission')">Mission</button>
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Soma')">Soma</button>
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Haight')">Haight-Ashbury</button>
-            <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Richmond')">Richmond</button>
+    <div ng-controller="newYearsRideDataController" ng-init="displayAppropriateInfo()">
+        
+        <div ng-show="dataCollection">
+            <h1>NYE Data Collection Process:</h1>
+            <p class="new_years_data_collection">In an attempt to test Uber's claim that surge pricing is based on supply and demand a cron job was setup on my local computer over New Years Eve.  This cron job automatically pinged the Uber API every minute from 6 different districts in San Francisco and stored the request time, wait time, and surge multiplier data in my database.  Data was collected from the evening of Wednesday December 30th, 2015 - Saturday January 2nd, 2016. Over the 4 days that data was gathered, a total of 24,777 data points were collected.</p>
+            <p class="new_years_data_collection">The districts of interest included: Nob Hill, Mission, SOMA, Richmond, Haight-Ashbury, and the Marina and can be seen on the map below:</p>
+            <div id = "data_collection_map"></div>
+            <p class="new_years_data_collection">Please use the links on the left under the SF New Years Eve Data tab to navigate through the charts.</p>
+        </div> 
+
+       <div ng-show="surgeMultiplierTimeSeries">
+            <h1>NYE: Surge Multiplier Time Series Plot</h1>
+            <p class="new_years_data_collection">The chart below displays The Uber Surge Multiplier from 6 PM on New Years Eve to 6 AM on New Years Morning.</p>
+            <p class="new_years_data_collection">Click neighborhoods on right of graph to add/remove from the graph.</p> 
+       </div>
+
+       <div ng-show="waitTimeTimeSeries">
+            <h1>NYE: Wait Time Time Series Plot</h1>
+            <p class="new_years_data_collection">The chart below displays The Uber Wait Time from 6 PM on New Years Eve to 6 AM on New Years Morning.</p>
+            <p class="new_years_data_collection">Click neighborhoods on right of graph to add/remove from the graph.</p> 
+       </div>
+
+        <div ng-show="showButtons"; "showChartInstructions">  
+            <h1>NYE: Wait Time vs Surge Multiplier</h1>
+            <p class="new_years_data_collection">The chart below displays Wait Time vs The Uber Surge Multiplier over the time period that data was collected.</p>  
+            <p class="new_years_data_collection">Use the buttons below to filter the data by neighborhood.</p>
+
+            <div class="surge_vs_time_buttons">
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('all')">All Data</button>
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Nob Hill')">Nob Hill</button>  
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Marina')">Marina</button>
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Mission')">Mission</button>
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Soma')">Soma</button>
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Haight')">Haight-Ashbury</button>
+                <button class="toggle_chart_buttons" ng-show="showButtons"; "showChartInstructions" ng-click="fetchNewYearsData('Richmond')">Richmond</button>
+            </div>
         </div>
 
-
-        <div id="new_years_data_graph" class="high_chart"></div>
-        <h4 class="chart_instructions" ng-show="showChartInstructions">*Click neighborhoods on right of graph to add/remove from the graph.</h4>
+        <div id="new_years_data_graph" class="high_chart" ng-show="showGraph"></div>
+        
+        <div ng-show="newYearsDataAnalysis">
+            <h1>NYE Data Analysis:</h1>
+            <p class="new_years_data_collection">The uber surge pricing policy pulled form Uber's website states:<p>
+            <p class="new_years_data_collection">"Uber rates increase to ensure reliability when demand cannot be met by the number of drivers on the road."</p>
+            <p class="new_years_data_collection">"Our goal is to be as reliable as possible in connecting you with a driver whenever you need one. At times of high demand, the number of drivers we can connect you with becomes limited. As a result, prices increase to encourage more drivers to become available."</p>
+            <p class="new_years_data_collection">The Pearson Correlation Coefficient was displayed under the graphs that compared wait time vs surge multiplier to quantify the colinearity of the two varibales.</p>
+            <p class="new_years_data_collection">Onlinestatbook.com states that:<p>
+            <p class="new_years_data_collection">"The Pearson product-moment correlation coefficient is a measure of the strength of the linear relationship between two variables. It is referred to as Pearson's correlation or simply as the correlation coefficient. If the relationship between the variables is not linear, then the correlation coefficient does not adequately represent the strength of the relationship between the variables."</p>
+            <p class="new_years_data_collection">The curvature in the data and lack of correlation between wait time (demand) and surge multiplier (supply) suggests that there is another contributing factor to Uber's surge pricing model.  Optimistic speculation would lead me to believe that the missing factor is drivers on the road, but I have a hard time believing that number of available drivers would not inversely correlate with wait time and thus a low wait time could be interpreted as a sufficient amount of drivers on the road.  Pessimistic speculation, on the other hand, would lead me to believe that Uber predetermines surge pricing during times of known high demand regardless of if there is a sufficient supply of drivers to provide rides in a reasonable amount of time.</p>
+        </div>
 
     </div>
 </div>
 
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
-
     var linkSelected = "<%=params[:linkClicked]%>";
-
 </script>

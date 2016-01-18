@@ -1,0 +1,40 @@
+// Place all the styles related to the uber_world_data controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.international_data_collection {
+  width: 80%;
+  margin-left: 10%;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+#left_city_list {
+  float: left;
+  margin-left: 12%;
+  font-size: 20px;
+}
+
+#right_city_list {
+  margin-left: 32%;
+  font-size: 20px;
+  margin-bottom: 50px; 
+}
+
+#world_buttons {
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 10px;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.international_or_domestic_buttons {
+  width: 250px;
+  border: solid black 1px;
+  text-align: center;
+}
+
+.international_button {
+  margin-left: 10px;
+}

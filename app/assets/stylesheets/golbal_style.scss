@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-  font-family: 'Courgette', cursive;
+  font-family: 'Arvo', serif;
   background-image: url(grunge_wall_@2X.png);
   background-repeat: repeat;
   background-size:cover;
@@ -48,7 +48,32 @@ body {
 }
 
 .panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
-    border: none;
+  background-color: gray;
+}
+
+.panel-group{
+  .panel, .panel-heading {
+    border:none !important;
+  }
+  .panel-body {
+    border: 1px solid black !important; 
+    border-width: 0 1px 1px 1px !important;
+  }
+  .panel-heading a, a.panel-heading {
+    outline: 0;
+  }
+  .panel-heading a:hover,.panel-heading a:focus, a.panel-heading:hover, a.panel-heading:focus {
+    text-decoration: none;  
+  }
+  .panel-heading .icon-indicator {
+    margin-right: 10px;
+  }
+  .panel-heading .icon-indicator:before {
+    content:"\e114";
+  }
+  .panel-heading.collapsed .icon-indicator:before {
+    content:"\e080";
+  }
 }
 
 #toolbar_image {
@@ -57,6 +82,7 @@ body {
   width:32px;
   height: 32px;
 }
+
 
 .top_profile_link {
   padding-top: 10px;
@@ -90,5 +116,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+
 
 

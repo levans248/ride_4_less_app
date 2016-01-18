@@ -18,10 +18,29 @@
 }
 
 .toggle_chart_buttons {
-  width: 125px;
+  width: 128px;
   border: solid black 1px;
 }
 
 .chart_instructions {
   margin-left: 10%;
+}
+
+.new_years_data_collection {
+  width: 80%;
+  margin-left: 10%;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+#data_collection_map {
+  margin-left: 10%;
+  width:80%; 
+  height:450px;
+  border: solid 3px black;
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
 }

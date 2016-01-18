@@ -1,27 +1,67 @@
 $(document).ready(function() { 
  
   $(document).ajaxStart($('#new_years_data_graph').block({ 
-      message: '<h1>Loading...</h1>', 
-      css: { border: '3px solid #a00'} 
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering NYE Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }  
       })
   ).ajaxStop($.unblockUI);
 
   $(document).ajaxStart($('#uber_time_trends').block({ 
-      message: '<h1>Gathering Uber Data...</h1>', 
-      css: { border: '3px solid #a00'} 
-      })
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering User Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }
+      }) 
   ).ajaxStop($.unblockUI);
 
   $(document).ajaxStart($('#cities_map').block({ 
-      message: '<h1>Gathering Uber Data...</h1>', 
-      css: { border: '3px solid #a00'} 
-      })
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering User Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }
+      }) 
   ).ajaxStop($.unblockUI);
 
   $(document).ajaxStart($('#profile_data').block({ 
-      message: '<h1>Gathering Data From Uber...</h1>', 
-      css: { border: '3px solid #a00'} 
-      })
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering User Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }
+      }) 
   ).ajaxStop($.unblockUI);
 
   $('.toggle_chart_buttons').click(function() { 

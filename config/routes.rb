@@ -12,12 +12,20 @@ Rails.application.routes.draw do
   
   get '/new_years_data', to: 'new_years_data#new_years_data'
 
+  get '/international_data', to: 'uber_world_data#international_data'
+
   get '/auth/uber/callback', to: 'sessions#create'
   get '/signout', to: 'sessions#destroy', as: :sign_out
 
   namespace :api do
     namespace :v1 do
       resources :new_years_data
+    end
+  end
+
+  namespace :api do 
+    namespace :v1 do
+      resources :uber_world_data
     end
   end
 

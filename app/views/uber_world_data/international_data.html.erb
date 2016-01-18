@@ -1,0 +1,51 @@
+<div ng-app="app">
+  <div ng-controller="uberWorldDataController" ng-init="displayAppropriateInfo()">
+
+    <div ng-show="dataCollection">
+      <h1>Uber Around the World Data Collection Process:</h1>
+      <p class="international_data_collection">A cron job was setup that automatically pinged the Uber API every minute from 6PM Saturday evening - 6AM Sunday morning in 14 different cities around the world. The request time, wait time, surge multiplier, distance, and fare estimate for an uberX was recorded and stored the database. This data was used to see how uber behaves in different cities in relation to San Francisco.</p>
+      <p class="international_data_collection">The areas of interest include:</p> 
+      <ul id="left_city_list">
+        <li>San Francisco</li> 
+        <li>Hollywood</li>
+        <li>Chicago</li>
+        <li>New York</li>
+        <li>New Orleans</li> 
+        <li>Seattle</li>
+        <li>Denver</li>
+      </ul>
+      <ul id="right_city_list"> 
+        <li>Boston</li>
+        <li>Paris</li> 
+        <li>London</li>
+        <li>Perth</li>
+        <li>Bangkok</li>
+        <li>Hong Kong</li> 
+      </ul>
+      <p class="international_data_collection">The cities can be seen on the map below:</p>
+      <div id = "data_collection_map"></div>
+      <p class="international_data_collection">Please use the links on the left under the Uber Around the World tab to navigate through the charts with a brief data analysis at the end.</p>
+    </div>
+
+    <div ng-show="surgeMultiplierTimeSeries">
+      <h2>Uber Around the World Data: Surge Multiplier Time Series Plot</h2>
+      <p class="new_years_data_collection">The chart below displays The Uber Surge Multiplier from 6 PM on New Years Eve to 6 AM on New Years Morning.</p>
+      <p class="new_years_data_collection">Click the buttons below to change between San Francisco compared to other cities in the United States and San Francisco compared to other cities around the world.</p>
+      <p class="new_years_data_collection">Click cities on right of graph to add/remove from the graph.</p> 
+    </div>
+
+    <div id="world_buttons">
+      <button class="international_or_domestic_buttons" ng-show="showButtons"; ng-click="fetchSaturdayNightData('domestic')">SF & Domestic Cities</button>
+      <button class="international_or_domestic_buttons international_button" ng-show="showButtons"; ng-click="fetchSaturdayNightData('international')">SF & International Cities</button> 
+    </div> 
+
+    <div id="international_data_graph" class="high_chart" ng-show="showGraph"></div>
+
+
+  </div>
+</div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    var linkSelected = "<%=params[:linkClicked]%>";
+</script>

@@ -24,17 +24,17 @@ class RideDetailsController < ApplicationController
         else  
           @google_bus_data = Unirest.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{@origin[0]},#{@origin[1]}&destinations=#{@destination[0]},#{@destination[1]}&mode=transit&transit_mode=bus&units=imperial&key=#{ENV['GOOGLE_MAPS_API_KEY']}").body 
           
-          if @google_bus_data["rows"][0]["elements"][0]["distance"]["text"].length < 5 
+          # if @google_bus_data["rows"][0]["elements"][0]["distance"]["text"].length < 6 
             @estimations = client.price_estimations(start_latitude: @origin[0], start_longitude: @origin[1], end_latitude: @destination[0], end_longitude: @destination[1])
             @start_lat = @origin[0]
             @start_lng = @origin[1]
             end_lat = @destination[0]
             end_lng = @destination[1]
             @surge_hash = surgeAvoider(@start_lat, @start_lng, end_lat, end_lng).to_a
-          else
-            flash[:danger] = "Pickup Address and Drop Off location must be within 100 miles of eachother.  Currently, your request is #{@google_bus_data["rows"][0]["elements"][0]["distance"]["text"]}les."
-            redirect_to "/ride_details"
-          end
+          # else
+          #   flash[:danger] = "Pickup Address and Drop Off location must be within 100 miles of eachother.  Currently, your request is #{@google_bus_data["rows"][0]["elements"][0]["distance"]["text"]}les."
+          #   redirect_to "/ride_details"
+          # end
         end    
       end 
     end   

@@ -4,7 +4,7 @@
   <title>Ride4LessApp</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans|Arvo' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -56,6 +56,9 @@
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <p>
+                                    <a href="/new_years_data?linkClicked=nye_data_collection">NYE: Data Collection</a>
+                                </p>
+                                <p>
                                     <a href="/new_years_data?linkClicked=surge_vs_time_of_day">NYE: Surge Time Series Plots</a>
                                 </p>
                                 <p>
@@ -63,6 +66,9 @@
                                 </p>
                                 <p>
                                     <a href="/new_years_data?linkClicked=surge_vs_wait_time">NYE: Surge vs. Wait Time</a>
+                                </p>
+                                <p>
+                                    <a href="/new_years_data?linkClicked=nye_data_analysis">NYE: Data Analysis</a>
                                 </p>
                             </div>
                         </div>
@@ -76,7 +82,12 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                             <div class="panel-body">
-                                TEST TEST TEST TEST
+                                <p>
+                                    <a href="/international_data?linkClicked=international_data_collection">Data Collection</a>
+                                </p>
+                                <p>
+                                    <a href="/international_data?linkClicked=surge_vs_time_of_day">Surge Time Series Plots</a>
+                                </p>
                             </div>
                         </div>
                     </div>
