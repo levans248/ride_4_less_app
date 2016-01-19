@@ -51,6 +51,15 @@ body {
   background-color: gray;
 }
 
+.panel-body {
+  font-color: black !important;
+}
+
+.sidebar-nav .panel-body a {
+    color: black;
+    text-decoration: underline;
+}
+
 .panel-group{
   .panel, .panel-heading {
     border:none !important;
@@ -112,9 +121,27 @@ body {
     padding-top: 15px;
     position:relative;
     bottom:0;
-    width:25%;
+    width:100%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.footer_toggled {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+
+body #footer a {
+  color: black !important;
 }
 
 

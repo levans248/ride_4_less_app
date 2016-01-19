@@ -1,4 +1,4 @@
-function internationalSurgeVsTimeOfDay(json_data, string) {
+function internationalWaitTimeVsTimeOfDay(json_data, string) {
 
   var sanFranciscoArray= [];
   var hollywoodArray = [];
@@ -18,43 +18,41 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
   if(string == "international") {
     for(var i=0; i < json_data.length; i++){
       if(json_data[i]["city"] == "Nob Hill") {
-        sanFranciscoArray.push(json_data[i]["surge_multiplier"]);
+        sanFranciscoArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);
       } else if (json_data[i]["city"] == "Paris") {
-        parisArray.push(json_data[i]["surge_multiplier"]);   
+        parisArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Perth") {
-        perthArray.push(json_data[i]["surge_multiplier"]);   
+        perthArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "London") {
-        londonArray.push(json_data[i]["surge_multiplier"]);   
+        londonArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Bangkok") {
-        bangkokArray.push(json_data[i]["surge_multiplier"]);   
+        bangkokArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Hong Kong") {
-        hongKongArray.push(json_data[i]["surge_multiplier"]);  
+        hongKongArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);  
       } 
     }
   } else {
     for(var i=0; i < json_data.length; i++){
       if(json_data[i]["city"] == "Nob Hill") {
-        sanFranciscoArray.push(json_data[i]["surge_multiplier"]);
+        sanFranciscoArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);
       } else if (json_data[i]["city"] == "Hollywood") {
-        hollywoodArray.push(json_data[i]["surge_multiplier"]);   
+        hollywoodArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Seattle") {
-        seattleArray.push(json_data[i]["surge_multiplier"]);   
+        seattleArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Denver") {
-        denverArray.push(json_data[i]["surge_multiplier"]);   
+        denverArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "New Orleans") {
-        newOrleansArray.push(json_data[i]["surge_multiplier"]);   
+        newOrleansArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);   
       } else if (json_data[i]["city"] == "Chicago") {
-        chicagoArray.push(json_data[i]["surge_multiplier"]);  
+        chicagoArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);  
       } else if (json_data[i]["city"] == "Boston") {
-        bostonArray.push(json_data[i]["surge_multiplier"]);  
+        bostonArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);  
       } else if (json_data[i]["city"] == "Times Square, NY") {
-        newYorkArray.push(json_data[i]["surge_multiplier"]);  
+        newYorkArray.push(Math.round((json_data[i]["wait_time"]/60.0)* 100) / 100);  
       }
     }
   }
  
-
-  console.log(hongKongArray);
 
   Highcharts.setOptions({
      colors: ["#DDDF0D", "#7798BF", "#55BF3B", "#DF5353", "#aaeeee", "#ff0066", "#eeaaee", 
@@ -194,7 +192,7 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
                 borderRadius: 0
             },
             title: {
-                text: 'International: Surge Multiplier vs Time Over the Night of Saturday January 16, 2016',
+                text: 'International: Wait-Time vs Time Over the Night of Saturday January 16, 2016',
                 x: -20 //center
             },
             subtitle: {
@@ -213,7 +211,7 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
             },    
             yAxis: {
                 title: {
-                    text: 'Surge Multiplier'
+                    text: 'Wait-Time'
                 },
                 plotLines: [{
                     value: 0,
@@ -222,7 +220,7 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
                 }]
             },
             tooltip: {
-                valueSuffix: ' X'
+                valueSuffix: ' minutes'
             },
             legend: {
                 layout: 'vertical',
@@ -285,7 +283,7 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
             },    
             yAxis: {
                 title: {
-                    text: 'Surge Multiplier'
+                    text: 'Wait-Time'
                 },
                 plotLines: [{
                     value: 0,
@@ -294,7 +292,7 @@ function internationalSurgeVsTimeOfDay(json_data, string) {
                 }]
             },
             tooltip: {
-                valueSuffix: ' X'
+                valueSuffix: ' minutes'
             },
             legend: {
                 layout: 'vertical',

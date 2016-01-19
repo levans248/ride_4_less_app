@@ -40,7 +40,7 @@
                                         <p class="profile_links bottom_profile_link"><a href="/uber_histories/uber_data?linkClicked=time_trends">Uber Usage Time Trends</a></p>
                                     </div>
                                 <% else %>    
-                                    <p class="profile_links bottom_profile_link"><a href="/auth/uber">Sign In With Uber</a></p>
+                                    <p class="profile_links bottom_profile_link"><a href="/auth/uber" onclick="clickAndDisable(this)">Sign In With Uber</a></p>
                                 <% end %>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     <a href="/new_years_data?linkClicked=nye_data_collection">NYE: Data Collection</a>
                                 </p>
                                 <p>
-                                    <a href="/new_years_data?linkClicked=surge_vs_time_of_day">NYE: Surge Time Series Plots</a>
+                                    <a href="/new_years_data?linkClicked=surge_vs_time_of_day">NYE: Surge Time Series Plot</a>
                                 </p>
                                 <p>
                                     <a href="/new_years_data?linkClicked=wait_time_vs_time_of_day">NYE: Wait-Time Time Series Plot</a>
@@ -86,7 +86,16 @@
                                     <a href="/international_data?linkClicked=international_data_collection">Data Collection</a>
                                 </p>
                                 <p>
-                                    <a href="/international_data?linkClicked=surge_vs_time_of_day">Surge Time Series Plots</a>
+                                    <a href="/international_data?linkClicked=surge_vs_time_of_day">Surge Time Series Plot</a>
+                                </p>
+                                <p>
+                                    <a href="/international_data?linkClicked=wait_time_vs_time_of_day">Wait-Time Time Series Plot</a>
+                                </p>
+                                <p>
+                                    <a href="/international_data?linkClicked=surge_vs_wait_time">Surge Multiplier vs Wait-Time</a>
+                                </p>
+                                <p>
+                                    <a href="/international_data?linkClicked=cost_to_go_one_mile">Cost to Travel One Mile</a>
                                 </p>
                             </div>
                         </div>
@@ -122,18 +131,25 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
-        <div id="footer">
-            <footer>    
-                <p>Webpage created by Luke Evans, luevans248@gmail.com</p>
-            </footer>
-        </div>
+    <div id="footer" class="footer_toggled">
+        <footer >    
+            <p ><a href="mailto:luevans248@gmail.com">Webpage created by Luke Evans, luevans248@gmail.com</p>
+        </footer>
+    </div>
     <!-- /#wrapper -->
 
     <!-- Menu Toggle Script -->
     <script>
+    function clickAndDisable(link) {
+     link.onclick = function(event) {
+        event.preventDefault();
+     }
+    }
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        $("#footer").toggleClass("footer_toggled");
     });
 
     $(document).ready(function () {

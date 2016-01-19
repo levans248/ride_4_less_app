@@ -1,6 +1,6 @@
 function dataCollectionMap(array) {
 
-  if(array.length < 6) {
+  if(array.length < 7) {
     var map = new google.maps.Map(document.getElementById('data_collection_map'), {
         zoom:12,
         center: {lat: 37.7776793, lng: -122.4076399}, 

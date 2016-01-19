@@ -64,11 +64,70 @@ $(document).ready(function() {
       }) 
   ).ajaxStop($.unblockUI);
 
+  $(document).ajaxStart($('#international_data_graph').block({ 
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering Uber Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }  
+      })
+  ).ajaxStop($.unblockUI);
+
   $('.toggle_chart_buttons').click(function() { 
-    $('#new_years_data_graph').block({ message: '<h1>Loading</h1' }); 
+    $('#new_years_data_graph').block({ 
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering NYE Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }  
+      }); 
   });
 
+  $('.international_or_domestic_buttons').click(function() { 
+    $('#international_data_graph').block({
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering Uber Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }  
+      }); 
+  });
 
-
-
+  $('.international_toggle_chart_buttons').click(function() { 
+    $('#international_data_graph').block({
+      message: '<h1><img src= "https://s3.amazonaws.com/clickmeter.com/Web/static/small-loader.gif">Gathering Uber Data...</h1>', 
+      css: {padding: 125,
+            margin: 0,
+            background: 'gray',
+            height: '100%',
+            width: '100%',
+            top: '35%',
+            left: '0%',
+            border: 'none',
+            textAlign: 'center',
+            cursor: 'wait'
+           }  
+      }); 
+  });
 }); 

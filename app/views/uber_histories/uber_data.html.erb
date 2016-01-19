@@ -28,8 +28,6 @@
 
 
     <div ng-show="citiesMap">
-      <hr class="lines">
-      <hr class="lines">
       <h3 id="uber_cities_header">You have used Uber in:</h3>
       <ul>
         <li class="uber_cities last" ng-repeat="(city, count) in all_data[1]">
@@ -40,6 +38,7 @@
     </div>
 
     <div ng-show="timeTrends">
+      <p id="time_trends_header">The chart below shows the percentage of your total rides taken per given time block:</p>
       <div id="uber_time_trends" class="high_chart" ng-init="userHistoryData()"></div>
     </div>
 

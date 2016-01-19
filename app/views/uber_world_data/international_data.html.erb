@@ -29,15 +29,49 @@
 
     <div ng-show="surgeMultiplierTimeSeries">
       <h2>Uber Around the World Data: Surge Multiplier Time Series Plot</h2>
-      <p class="new_years_data_collection">The chart below displays The Uber Surge Multiplier from 6 PM on New Years Eve to 6 AM on New Years Morning.</p>
-      <p class="new_years_data_collection">Click the buttons below to change between San Francisco compared to other cities in the United States and San Francisco compared to other cities around the world.</p>
-      <p class="new_years_data_collection">Click cities on right of graph to add/remove from the graph.</p> 
+      <p class="international_data_collection">The chart below displays The Uber Surge Multiplier from 6PM Saturday evening - 6AM Sunday morning in 14 different cities around the world</p>
+      <p class="international_data_collection">Click the buttons below to change between San Francisco compared to other cities in the United States and San Francisco compared to other cities around the world.</p>
+      <p class="international_data_collection">Click cities on right of graph to add/remove from the graph.</p> 
+    </div>
+
+    <div ng-show="waitTimeTimeSeries">
+      <h2>Uber Around the World Data: Wait-Time Time Series Plot</h2>
+      <p class="international_data_collection">The chart below displays The Uber Wait-Time from 6PM Saturday evening - 6AM Sunday morning in 14 different cities around the world</p>
+      <p class="international_data_collection">Click the buttons below to change between San Francisco compared to other cities in the United States and San Francisco compared to other cities around the world.</p>
+      <p class="international_data_collection">Click cities on right of graph to add/remove from the graph.</p> 
     </div>
 
     <div id="world_buttons">
       <button class="international_or_domestic_buttons" ng-show="showButtons"; ng-click="fetchSaturdayNightData('domestic')">SF & Domestic Cities</button>
       <button class="international_or_domestic_buttons international_button" ng-show="showButtons"; ng-click="fetchSaturdayNightData('international')">SF & International Cities</button> 
     </div> 
+
+    <div ng-show="surgeVsWaitTime">  
+      <h1>NYE: Wait Time vs Surge Multiplier</h1>
+      <p class="international_data_collection">The chart below displays Wait Time vs The Uber Surge Multiplier over the time period that data was collected.</p>  
+      <p class="international_data_collection">Use the buttons below to filter the data by neighborhood.</p>
+      <div class="surge_vs_time_buttons">
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('all')">All Data</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Nob Hill')">San Francisco</button>  
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Chicago')">Chicago</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Denver')">Denver</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Boston')">Boston</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Times Square, NY')">New York</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Hollywood')">Hollywood</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Seattle')">Seattle</button>  
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('New Orleans')">New Orleans</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Paris')">Paris</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('London')">London</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Hong Kong')">Hong Kong</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Bangkok')">Bangkok</button>
+        <button class="international_toggle_chart_buttons" ng-show="internationalButtons" ng-click="fetchSaturdayNightData('Perth')">Perth, Austrailia</button>
+      </div>
+    </div>
+
+    <div ng-show="costToGoOneMile">
+      <h2>Uber Around the World Data: Average Cost to Travel 1 Mile</h2>
+      <p class="international_data_collection">The chart below displays the average cost to travel 1 mile in different cities around the world. The data being used to calculate the cost was collected on Saturday January 16th, 2016 from 6PM - 6AM Sunday morning.</p>
+    </div>
 
     <div id="international_data_graph" class="high_chart" ng-show="showGraph"></div>
 
