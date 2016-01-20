@@ -141,33 +141,33 @@ class Api::V1::UberWorldDataController < ApplicationController
       end
     end
 
-    eight_hours_ahead = UberWorldDatum.where(:city => ["London"]).where(created_at: ("2016-01-16 11:00:00".."2016-01-16 23:00:00"))
-    london_total = 0
-    london_count = 0
-    london_distance = 0
-    average = 0
-    eight_hours_ahead.each do |request|
-      london_count += 1
-      london_estimate = /.[*0-9]-[0-9]*/.match(request.estimate)
-      london_estimate_array = london_estimate[0].split("-")
-      average = ((london_estimate_array[0].to_i + london_estimate_array[1].to_i)/2) * 1.08
-      london_total = london_total + average
-      london_distance = request.distance 
-    end
+    # eight_hours_ahead = UberWorldDatum.where(:city => ["London"]).where(created_at: ("2016-01-16 11:00:00".."2016-01-16 23:00:00"))
+    # london_total = 0
+    # london_count = 0
+    # london_distance = 0
+    # average = 0
+    # eight_hours_ahead.each do |request|
+    #   london_count += 1
+    #   london_estimate = /.[*0-9]-[0-9]*/.match(request.estimate)
+    #   london_estimate_array = london_estimate[0].split("-")
+    #   average = ((london_estimate_array[0].to_i + london_estimate_array[1].to_i)/2) * 1.08
+    #   london_total = london_total + average
+    #   london_distance = request.distance 
+    # end
 
-    nine_hours_ahead = UberWorldDatum.where(:city => ["Paris"]).where(created_at: ("2016-01-16 10:00:00".."2016-01-16 22:00:00"))
-    paris_total = 0
-    paris_count = 0
-    paris_distance = 0
-    average = 0
-    nine_hours_ahead.each do |request|
-      paris_count += 1
-      paris_estimate = /.[*0-9]-[0-9]*/.match(request.estimate)
-      paris_estimate_array = paris_estimate[0].split("-")
-      average = ((paris_estimate_array[0].to_i + paris_estimate_array[1].to_i)/2) * 1.08
-      paris_total = paris_total + average
-      paris_distance = request.distance 
-    end
+    # nine_hours_ahead = UberWorldDatum.where(:city => ["Paris"]).where(created_at: ("2016-01-16 10:00:00".."2016-01-16 22:00:00"))
+    # paris_total = 0
+    # paris_count = 0
+    # paris_distance = 0
+    # average = 0
+    # nine_hours_ahead.each do |request|
+    #   paris_count += 1
+    #   paris_estimate = /.[*0-9]-[0-9]*/.match(request.estimate)
+    #   paris_estimate_array = paris_estimate[0].split("-")
+    #   average = ((paris_estimate_array[0].to_i + paris_estimate_array[1].to_i)/2) * 1.08
+    #   paris_total = paris_total + average
+    #   paris_distance = request.distance 
+    # end
 
     fifteen_hours_ahead = UberWorldDatum.where(:city => ["Bangkok"]).where(created_at: ("2016-01-16 02:00:00".."2016-01-16 14:00:00"))
     bangkok_total = 0
@@ -210,7 +210,7 @@ class Api::V1::UberWorldDataController < ApplicationController
     end
 
 
-    return {"SF"=> ((sf_total/sf_count)/sf_distance).round(2), "Seattle"=> ((seattle_total/seattle_count)/seattle_distance).round(2), "Hollywood"=> ((hollywood_total/hollywood_count)/hollywood_distance).round(2), "Denver"=> ((denver_total/denver_count)/denver_distance).round(2), "Chicago"=> ((chicago_total/chicago_count)/chicago_distance).round(2), "New Orleans"=> ((new_orleans_total/new_orleans_count)/new_orleans_distance).round(2), "New York"=> ((new_york_total/new_york_count)/new_york_distance).round(2), "Boston"=> ((boston_total/boston_count)/boston_distance).round(2), "London"=> ((london_total/london_count)/london_distance).round(2), "Paris"=> ((paris_total/paris_count)/paris_distance).round(2), "Bangkok"=> ((bangkok_total/bangkok_count)/bangkok_distance).round(2), "Perth"=> ((perth_total/perth_count)/perth_distance).round(2), "Hong Kong"=> ((hong_kong_total/hong_kong_count)/hong_kong_distance).round(2)}
+    return {"SF"=> ((sf_total/sf_count)/sf_distance).round(2), "Seattle"=> ((seattle_total/seattle_count)/seattle_distance).round(2), "Hollywood"=> ((hollywood_total/hollywood_count)/hollywood_distance).round(2), "Denver"=> ((denver_total/denver_count)/denver_distance).round(2), "Chicago"=> ((chicago_total/chicago_count)/chicago_distance).round(2), "New Orleans"=> ((new_orleans_total/new_orleans_count)/new_orleans_distance).round(2), "New York"=> ((new_york_total/new_york_count)/new_york_distance).round(2), "Boston"=> ((boston_total/boston_count)/boston_distance).round(2), "Bangkok"=> ((bangkok_total/bangkok_count)/bangkok_distance).round(2), "Perth"=> ((perth_total/perth_count)/perth_distance).round(2), "Hong Kong"=> ((hong_kong_total/hong_kong_count)/hong_kong_distance).round(2)}
   end
 
 

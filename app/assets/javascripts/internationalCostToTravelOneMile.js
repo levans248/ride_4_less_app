@@ -209,12 +209,6 @@ function internationalCostToTravelOneMile(cost_trends_hash) {
                     name: 'Perth',
                     y: perth
                 }, {
-                    name: 'London',
-                    y: london
-                }, {
-                    name: 'Paris',
-                    y: paris
-                }, {
                     name: 'Seattle',
                     y: seattle
                 }, {
