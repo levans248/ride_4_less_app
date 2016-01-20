@@ -27,7 +27,7 @@ gem 'thematic'
 
 gem 'geocoder'
 
-gem 'uber-ruby', require: 'uber', :path => "~/acltc/uber-ruby"
+gem 'uber-ruby', require: 'uber'
 
 gem 'omniauth'
 
@@ -43,7 +43,9 @@ gem 'seed_dump'
 
 gem 'jquery-ui-rails'
 
+gem 'pg', group: :production
 
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
