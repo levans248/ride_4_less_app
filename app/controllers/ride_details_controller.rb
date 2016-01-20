@@ -8,11 +8,6 @@ class RideDetailsController < ApplicationController
       if params[:origin] && params[:destination]   
         @origin = Geocoder.coordinates(params[:origin])
         @destination = Geocoder.coordinates(params[:destination])
-        client = Uber::Client.new do |config|
-          config.server_token  = ENV['SERVER_TOKEN']
-          config.client_id     = ENV['CLIENT_ID']
-          config.client_secret = ENV['CLIENT_SECRET']
-        end
         @google_bus_data = Unirest.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{@origin[0]},#{@origin[1]}&destinations=#{@destination[0]},#{@destination[1]}&mode=transit&transit_mode=bus&units=imperial&key=#{ENV['GOOGLE_MAPS_API_KEY']}").body
         if @google_bus_data["rows"][0]["elements"][0]["status"] == "ZERO_RESULTS"
           flash[:danger] = "I'm Sorry, no bus routes available to your destination.  Please try again."
@@ -26,6 +21,11 @@ class RideDetailsController < ApplicationController
             redirect_to "/"
           else          
             if @google_bus_data["rows"][0]["elements"][0]["distance"]["text"][0..-4].delete(",").to_i.to_s.length < 3 
+              client = Uber::Client.new do |config|
+                config.server_token  = ENV['SERVER_TOKEN']
+                config.client_id     = ENV['CLIENT_ID']
+                config.client_secret = ENV['CLIENT_SECRET']
+              end
               @estimations = client.price_estimations(start_latitude: @origin[0], start_longitude: @origin[1], end_latitude: @destination[0], end_longitude: @destination[1])
               @start_lat = @origin[0]
               @start_lng = @origin[1]
