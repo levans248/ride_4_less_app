@@ -1,3 +1,4 @@
+require "Uber"
 class RideDetailsController < ApplicationController
 
   def index  
