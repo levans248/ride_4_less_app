@@ -25,8 +25,8 @@ class RideDetailsController < ApplicationController
                 config.server_token  = ENV['SERVER_TOKEN']
                 config.client_id     = ENV['CLIENT_ID']
                 config.client_secret = ENV['CLIENT_SECRET']
-              end
               @estimations = client.price_estimations(start_latitude: @origin[0], start_longitude: @origin[1], end_latitude: @destination[0], end_longitude: @destination[1])
+              end
               @start_lat = @origin[0]
               @start_lng = @origin[1]
               end_lat = @destination[0]
