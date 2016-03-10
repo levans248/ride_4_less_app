@@ -103,7 +103,10 @@ class Api::UberHistoriesController < ApplicationController
 
   def time_patterns
     times_hash = Hash.new(0)
+    time_array = []
     all_uber_rides.each do |ride|
+      puts ride['request_time']  
+      time_array << ride['request_time'].to_s[11..12]
       if ride['request_time'].to_s[11..12] == "00" || ride['request_time'].to_s[11..12] == "01"
         times_hash[1] += 1
       elsif ride['request_time'].to_s[11..12] == "02" || ride['request_time'].to_s[11..12] == "03"
@@ -130,7 +133,7 @@ class Api::UberHistoriesController < ApplicationController
         times_hash[12] += 1
       end     
     end
-    return [get_client.history.count, times_hash]
+    return [get_client.history.count, times_hash, time_array]
     
   end
 

@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'thematic'
 
-gem 'geocoder'
+gem 'geocoder', '~> 1.3', '>= 1.3.1'
 
 gem 'uber-ruby', require: 'uber'
 
@@ -45,6 +45,8 @@ gem 'jquery-ui-rails'
 gem 'pg', group: :production
 
 gem 'rails_12factor', group: :production
+
+gem 'delayed_job_active_record'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
