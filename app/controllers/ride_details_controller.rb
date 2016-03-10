@@ -69,7 +69,6 @@ class RideDetailsController < ApplicationController
       count = 1
       multiplier = 1
       surge_coordinates_hash = {}
-      p estimations[0].surge_multiplier
       one_counter = 0
 
 
